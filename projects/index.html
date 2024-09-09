@@ -3,36 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subfolders List</title>
+    <title>File Browser</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        ul {
-            list-style-type: none;
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
         }
-        li {
-            margin: 5px 0;
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+        .file-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+        .file-list li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .file-list li a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Subfolders on the Web Server</h1>
-    <ul id="subfolders-list"></ul>
-
+    <div class="container">
+        <h1>File Browser</h1>
+        <ul id="fileList" class="file-list"></ul>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            fetch('/api/subfolders') // Replace with your actual endpoint
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/path/to/your/server-side/script')
                 .then(response => response.json())
-                .then(data => {
-                    const list = document.getElementById('subfolders-list');
-                    data.subfolders.forEach(subfolder => {
+                .then(files => {
+                    const fileList = document.getElementById('fileList');
+                    files.forEach(file => {
                         const listItem = document.createElement('li');
-                        listItem.textContent = subfolder;
-                        list.appendChild(listItem);
+                        const link = document.createElement('a');
+                        link.href = `/path/to/your/files/${file}`;
+                        link.textContent = file;
+                        listItem.appendChild(link);
+                        fileList.appendChild(listItem);
                     });
                 })
-                .catch(error => console.error('Error fetching subfolders:', error));
+                .catch(error => console.error('Error fetching files:', error));
         });
     </script>
 </body>
