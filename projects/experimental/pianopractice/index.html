@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piano Scale Practice</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .options {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            width: 300px;
+        }
+        .scale-box {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .scale {
+            font-size: 3em;
+            text-align: center;
+        }
+        .notes {
+            font-size: 1.5em;
+            color: #555;
+            margin-top: 10px;
+        }
+        .timer {
+            font-size: 1.2em;
+            color: #777;
+            margin-top: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="options">
+    <h2>Settings</h2>
+    
+    <label for="seconds">Seconds per scale:</label>
+    <input type="number" id="seconds" value="5">
+    
+    <label><input type="checkbox" id="major" checked> Major Scales</label>
+    <label><input type="checkbox" id="minor" checked> Minor Scales</label>
+    <label><input type="checkbox" id="major-pentatonic" checked> Major Pentatonic Scales</label>
+    <label><input type="checkbox" id="minor-pentatonic" checked> Minor Pentatonic Scales</label>
+
+    <button onclick="startRandomScale()">Start Practice</button>
+</div>
+
+<div class="scale-box">
+    <div class="scale" id="scale">Press Start!</div>
+    <div class="notes" id="notes"></div>
+    <div class="timer" id="timer">Time remaining: 0s</div>
+</div>
+
+<script>
+    const allScales = {
+        major: [
+            { name: 'C Major', notes: ['C', 'D', 'E', 'F', 'G', 'A', 'B'] },
+            { name: 'D Major', notes: ['D', 'E', 'F#', 'G', 'A', 'B', 'C#'] },
+            { name: 'E Major', notes: ['E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'] },
+            { name: 'F Major', notes: ['F', 'G', 'A', 'Bb', 'C', 'D', 'E'] },
+            { name: 'G Major', notes: ['G', 'A', 'B', 'C', 'D', 'E', 'F#'] },
+            { name: 'A Major', notes: ['A', 'B', 'C#', 'D', 'E', 'F#', 'G#'] },
+            { name: 'B Major', notes: ['B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#'] }
+        ],
+        minor: [
+            { name: 'C Minor', notes: ['C', 'D', 'Eb', 'F', 'G', 'Ab', 'Bb'] },
+            { name: 'D Minor', notes: ['D', 'E', 'F', 'G', 'A', 'Bb', 'C'] },
+            { name: 'E Minor', notes: ['E', 'F#', 'G', 'A', 'B', 'C', 'D'] },
+            { name: 'F Minor', notes: ['F', 'G', 'Ab', 'Bb', 'C', 'Db', 'Eb'] },
+            { name: 'G Minor', notes: ['G', 'A', 'Bb', 'C', 'D', 'Eb', 'F'] },
+            { name: 'A Minor', notes: ['A', 'B', 'C', 'D', 'E', 'F', 'G'] },
+            { name: 'B Minor', notes: ['B', 'C#', 'D', 'E', 'F#', 'G', 'A'] }
+        ],
+        majorPentatonic: [
+            { name: 'C Major Pentatonic', notes: ['C', 'D', 'E', 'G', 'A'] },
+            { name: 'D Major Pentatonic', notes: ['D', 'E', 'F#', 'A', 'B'] },
+            { name: 'E Major Pentatonic', notes: ['E', 'F#', 'G#', 'B', 'C#'] },
+            { name: 'F Major Pentatonic', notes: ['F', 'G', 'A', 'C', 'D'] },
+            { name: 'G Major Pentatonic', notes: ['G', 'A', 'B', 'D', 'E'] },
+            { name: 'A Major Pentatonic', notes: ['A', 'B', 'C#', 'E', 'F#'] },
+            { name: 'B Major Pentatonic', notes: ['B', 'C#', 'D#', 'F#', 'G#'] }
+        ],
+        minorPentatonic: [
+            { name: 'C Minor Pentatonic', notes: ['C', 'Eb', 'F', 'G', 'Bb'] },
+            { name: 'D Minor Pentatonic', notes: ['D', 'F', 'G', 'A', 'C'] },
+            { name: 'E Minor Pentatonic', notes: ['E', 'G', 'A', 'B', 'D'] },
+            { name: 'F Minor Pentatonic', notes: ['F', 'Ab', 'Bb', 'C', 'Eb'] },
+            { name: 'G Minor Pentatonic', notes: ['G', 'Bb', 'C', 'D', 'F'] },
+            { name: 'A Minor Pentatonic', notes: ['A', 'C', 'D', 'E', 'G'] },
+            { name: 'B Minor Pentatonic', notes: ['B', 'D', 'E', 'F#', 'A'] }
+        ]
+    };
+
+    let intervalId; // Keep track of the interval
+    let countdownId; // Keep track of the countdown
+
+    function startRandomScale() {
+        // Get the number of seconds
+        const seconds = parseInt(document.getElementById('seconds').value);
+        if (isNaN(seconds) || seconds <= 0) {
+            alert("Please enter a valid number of seconds.");
+            return;
+        }
+
+        // Gather the selected scales
+        const selectedScales = [];
+
+        if (document.getElementById('major').checked) {
+            selectedScales.push(...allScales.major);
+        }
+        if (document.getElementById('minor').checked) {
+            selectedScales.push(...allScales.minor);
+        }
+        if (document.getElementById('major-pentatonic').checked) {
+            selectedScales.push(...allScales.majorPentatonic);
+        }
+        if (document.getElementById('minor-pentatonic').checked) {
+            selectedScales.push(...allScales.minorPentatonic);
+        }
+
+        if (selectedScales.length === 0) {
+            alert("Please select at least one scale type.");
+            return;
+        }
+
+        // Clear any existing interval and countdown to avoid multiple intervals running
+        if (intervalId) clearInterval(intervalId);
+        if (countdownId) clearInterval(countdownId);
+
+        const scaleElement = document.getElementById('scale');
+        const notesElement = document.getElementById('notes');
+        const timerElement = document.getElementById('timer');
+
+        function displayRandomScale() {
+            const randomScale = selectedScales[Math.floor(Math.random() * selectedScales.length)];
+            scaleElement.textContent = randomScale.name;
+            notesElement.textContent = randomScale.notes.join(' ');
+
+            let timeLeft = seconds; // Reset countdown on each interval
+            timerElement.textContent = `Time remaining: ${timeLeft}s`;
+
+            // Countdown function
+            countdownId = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = `Time remaining: ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(countdownId); // Stop the countdown at 0
+                }
+            }, 1000);
+        }
+
+        // Display a random scale immediately
+        displayRandomScale();
+
+        // Set the interval to display a new random scale every 'seconds' seconds
+        intervalId = setInterval(displayRandomScale, seconds * 1000);
+    }
+</script>
+
+</body>
+</html>

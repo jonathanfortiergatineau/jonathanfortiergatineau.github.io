@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .trail {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.cursor = "url('path/to/your-cursor-image.png'), auto";
+
+            document.addEventListener("mousemove", function(event) {
+                // Create a new trail element
+                var newTrail = document.createElement("div");
+                newTrail.className = "trail";
+                newTrail.style.left = (event.pageX - 3) + "px";
+                newTrail.style.top = (event.pageY - 3) + "px";
+
+                // Change the color based on X and Y coordinates
+                var colorX = Math.round((event.pageX / window.innerWidth) * 260);
+                var colorY = Math.round((event.pageY / window.innerHeight) * 260);
+                var color = "rgb(" + colorX + ", " + colorY + ", 100)";
+
+                newTrail.style.backgroundColor = color;
+
+                // Append the new trail element to the body
+                document.body.appendChild(newTrail);
+
+                // Trigger a reflow to restart the transition
+                // See: https://css-tricks.com/restart-css-animation/
+                void newTrail.offsetWidth;
+
+                // Set opacity to 0 to start the fade-out effect
+                newTrail.style.opacity = "0";
+                newTrail.style.transform = "scale(0)";
+
+                // Remove the trail element after the fade-out effect
+                setTimeout(function() {
+                    document.body.removeChild(newTrail);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
