@@ -1,460 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive 8x8 Grid with Disabled Square</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <title>Jonathan Fortier</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!-- FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Franklin Gothic Medium', 'Poppins, Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #a3a3a3;
+        }
+        a {
+            color: #e0e0e0;
+        }
+        a:hover {
+            color: #ffffff;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* 8 columns by default */
+            grid-template-rows: repeat(10, 1fr); /* 10 rows always */
+            height: 100vh;
+            gap: 1px;
+        }
+        .grid-item, .grid-item2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #494d4e; /* Change this color as needed */
+            color: rgb(180, 180, 180);
+            font-size: 1.5rem;
+            text-align: center;
+            transition: background-color 1s ease, cursor 1s ease;
+        }
+        .grid-item2 {
+            cursor: wait; /* Default cursor for the non-clickable item */
+        }
+        .image1 {
+            background-image: url(assets/book3.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+        .image2 {
+            background-image: url(assets/image2.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+        .image3 {
+            background-image: url(assets/image3.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+        .image4 {
+            background-image: url(assets/image4.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,500,500i,600,600i,700,700i,900,900i" rel="stylesheet">
+        .image5 {
+            background-image: url(assets/image5.gif);
+            opacity: 75%;
+            filter: grayscale(75%);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        .image6 {
+            background-image: url(assets/image6.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+        .image7 {
+            background-image: url(assets/image7.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
 
-  <!-- =======================================================
-  * Template Name: Folio
-  * Updated: Nov 17 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+        /* Fixed hover effect */
+        .grid-item:hover, .grid-item2:hover {
+            background-color: #a66967; /* A fixed variation of the base color */
+        }
+        /* Media query for small screens */
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
+                grid-template-rows: repeat(10, 1fr); /* 10 rows always */
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center justify-content-between">
+    <!-- Grid -->
+    <div class="grid-container">
+        <!-- 64 squares, including one that is disabled -->
+        <div class="grid-item" data-bs-toggle="#" data-bs-target="#" style="background-color: #3a3a3a;">Jonathan Fortier</div>
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image1"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div><!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item"#"><a href="http://www.google.ca">Piano Practice</a></div>
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image3"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Click!</div>
 
-      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-      <!-- Uncomment below if you prefer to use an text logo -->
-      <!-- <h1 class="logo"><a href="index.html">Folio</a></h1> -->
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link  scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link  scrollto" href="#journal">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
 
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image10"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image3"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image4"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image5"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <!-- Repeat for remaining squares -->
     </div>
-  </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <div id="hero" class="home">
-
-    <div class="container">
-      <div class="hero-content">
-        <h1>Jonathan Fortier TEST <span class="typed" data-typed-items="Alex Smith, Designer, Developer, Freelancer, Photographer"></span></h1>
-        <p>Design`er, Developer, Freelancer, Photographer</p>
-
-        <ul class="list-unstyled list-social">
-          <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-          <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-          <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-          <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-        </ul>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Perte de temps</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Dude, t'a cliqué ça pour rien, désolé
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fuck</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div><!-- End Hero -->
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <div id="about" class="paddsection">
-      <div class="container">
-        <div class="row justify-content-between">
-
-          <div class="col-lg-4 ">
-            <div class="div-img-bg">
-              <div class="about-img">
-                <img src="assets/img/me.jpg" class="img-responsive" alt="me">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <div class="about-descr">
-
-              <p class="p-heading"><a href="projects/pianopractice/index.html"><u>Piano Practice App</u></a></p>
-              <p class="p-heading"><a href="projects/experimental/mouse_trail.html"><u>Experimental mouse trail</u></a></p>
-              <p class="p-heading"><a href="website/index.html"><u>Other Web site</u></a></p>
-              <p class="separator">To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family.English person.</p>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div><!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
-    <div id="services">
-      <div class="container">
-
-        <div class="services-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-briefcase"></i>
-                <span>UI/UX DESIGN</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-card-checklist"></i>
-                <span>BRAND IDENTITY</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-bar-chart"></i>
-                <span>WEB DESIGN</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-binoculars"></i>
-                <span>MOBILE APPS</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-brightness-high"></i>
-                <span>Analytics</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-calendar4-week"></i>
-                <span>PHOTOGRAPHY</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </div><!-- End Services Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <div id="portfolio" class="paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h2>My Portfolio</h2>
-        </div>
-      </div>
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div><!-- End Portfolio Section -->
-
-    <!-- ======= Journal Section ======= -->
-    <div id="journal" class="text-left paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h2>journal</h2>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="journal-block">
-          <div class="row">
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-
-                <a href="blog-single.html"><img src="assets/img/blog-post-1.jpg" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">SO LETS MAKE THE MOST IS BEAUTIFUL</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-
-                <a href="blog-single.html"><img src="assets/img/blog-post-2.jpg" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">WE'RE GONA MAKE DREAMS COMES</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
-                </div>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
-
-                <a href="blog-single.html"><img src="assets/img/blog-post-3.jpg" class="img-responsive" alt="img"></a>
-
-                <div class="journal-txt">
-
-                  <h4><a href="blog-single.html">NEW LIFE CIVILIZATIONS TO BOLDLY</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
-
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div><!-- End Journal Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <div id="contact" class="paddsection">
-      <div class="container">
-        <div class="contact-block1">
-          <div class="row">
-
-            <div class="col-lg-6">
-              <div class="contact-contact">
-
-                <h2 class="mb-30">GET IN TOUCH</h2>
-
-                <ul class="contact-details">
-                  <li><span>23 Main, Street</span></li>
-                  <li><span>New York, United States</span></li>
-                  <li><span>+88 01912704287</span></li>
-                  <li><span>example@example.com</span></li>
-                </ul>
-
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                <div class="row gy-3">
-
-                  <div class="col-lg-6">
-                    <div class="form-group contact-block1">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" placeholder="Message" required></textarea>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
-
-                  <div class="mt-0">
-                    <input type="submit" class="btn btn-defeault btn-send" value="Send message">
-                  </div>
-
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <div id="footer" class="text-center">
-    <div class="container">
-      <div class="socials-media text-center">
-
-        <ul class="list-unstyled">
-          <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-          <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-          <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-          <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-        </ul>
-
-      </div>
-
-      <p>&copy; Copyrights Folio. All rights reserved.</p>
-
-      <div class="credits">
-        <!--
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Folio
-      -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-
-    </div>
-  </div><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // List of possible cursor types
+        const cursorTypes = ['wait', 'crosshair', 'pointer', 'default', 'progress', 'move', 'help', 'not-allowed', 'grab'];
+
+        // Function to get a random cursor type
+        function getRandomCursor() {
+            const randomIndex = Math.floor(Math.random() * cursorTypes.length);
+            return cursorTypes[randomIndex];
+        }
+
+        // Add event listener to grid-item2 elements for hover effect
+        document.querySelectorAll('.grid-item2').forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.style.cursor = getRandomCursor(); // Change cursor to a random type
+            });
+        });
+    </script>
 
 </body>
-
 </html>
