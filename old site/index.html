@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive 8x8 Grid with Disabled Square</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Franklin Gothic Medium', 'Poppins, Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #a3a3a3;
+        }
+        a {
+            color: #e0e0e0;
+        }
+        a:hover {
+            color: #ffffff;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* 8 columns by default */
+            grid-template-rows: repeat(10, 1fr); /* 10 rows always */
+            height: 100vh;
+            gap: 1px;
+        }
+        .grid-item, .grid-item2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #494d4e; /* Change this color as needed */
+            color: rgb(180, 180, 180);
+            font-size: 1.5rem;
+            text-align: center;
+            transition: background-color 1s ease, cursor 1s ease;
+        }
+        .grid-item2 {
+            cursor: wait; /* Default cursor for the non-clickable item */
+        }
+        .image1 {
+            background-image: url(assets/book3.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+        .image2 {
+            background-image: url(assets/image2.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+        .image3 {
+            background-image: url(assets/image3.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+        .image4 {
+            background-image: url(assets/image4.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+        .image5 {
+            background-image: url(assets/image5.gif);
+            opacity: 75%;
+            filter: grayscale(75%);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+        .image6 {
+            background-image: url(assets/image6.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+        .image7 {
+            background-image: url(assets/image7.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+        .image8 {
+            background-image: url(assets/image8.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+
+        .image10 {
+            background-image: url(assets/image10.gif);
+            opacity: 75%;
+            filter: grayscale(75%);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+        .image11 {
+            background-image: url(assets/image11.gif);
+            background-repeat:no-repeat;
+            background-position: center center;
+        }
+
+        /* Fixed hover effect */
+        .grid-item:hover, .grid-item2:hover {
+            background-color: #a66967; /* A fixed variation of the base color */
+        }
+        /* Media query for small screens */
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr); /* 4 columns on small screens */
+                grid-template-rows: repeat(10, 1fr); /* 10 rows always */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Grid -->
+    <div class="grid-container">
+        <!-- 64 squares, including one that is disabled -->
+        <div class="grid-item" data-bs-toggle="#" data-bs-target="#" style="background-color: #3a3a3a;">Jonathan Fortier</div>
+        <div class="grid-item2 image10"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"><a href="#">Piano Practice</a></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image1"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div><!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item"#"><a href="projects/pianopractice/index.html">Piano Practice</a></div>
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image3"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Click!</div>
+
+
+
+        <div class="grid-item2 image8"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image10"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image3"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image4"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2 image5"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+        <div class="grid-item2"></div> <!-- Non-clickable, different cursor -->
+
+        <!-- Repeat for remaining squares -->
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Perte de temps</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Dude, t'a cliqué ça pour rien, désolé
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fuck</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // List of possible cursor types
+        const cursorTypes = ['wait', 'crosshair', 'pointer', 'default', 'progress', 'move', 'help', 'not-allowed', 'grab'];
+
+        // Function to get a random cursor type
+        function getRandomCursor() {
+            const randomIndex = Math.floor(Math.random() * cursorTypes.length);
+            return cursorTypes[randomIndex];
+        }
+
+        // Add event listener to grid-item2 elements for hover effect
+        document.querySelectorAll('.grid-item2').forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.style.cursor = getRandomCursor(); // Change cursor to a random type
+            });
+        });
+    </script>
+
+</body>
+</html>
