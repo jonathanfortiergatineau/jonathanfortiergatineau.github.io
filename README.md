@@ -1,1 +1,0 @@
-# jonathanfortiergatineau.github.io
