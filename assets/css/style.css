@@ -224,30 +224,14 @@ a:hover {
 
 /*------/ Socials /------*/
 .socials {
-  padding: 1.5rem 0;
+  padding: 5px;
+  font-size: 2em;
 }
 
 .socials ul li {
   display: inline-block;
 }
 
-.socials .ico-circle {
-  height: 40px;
-  width: 40px;
-  font-size: 1.2rem;
-  border-radius: 50%;
-  line-height: 1.6;
-  margin: 0 15px 0 0;
-  box-shadow: 0 0 0 3px #31c2dd;
-  transition: all 500ms ease;
-}
-
-.socials .ico-circle:hover {
-  background-color: #31c2dd;
-  color: #fff;
-  box-shadow: 0 0 0 3px #cde1f8;
-  transition: all 500ms ease;
-}
 
 /*------/ Ul resect /------*/
 .ul-resect,
@@ -472,7 +456,7 @@ a:hover {
 
 #header .logo {
   font-size: 28px;
-  font-family: "Noto serif", serif;
+  font-family: Noto serif, serif;
   margin: 0;
   padding: 0;
   font-weight: 100;
@@ -776,7 +760,7 @@ a:hover {
 
 .hero .hero-title {
   color: #fff;
-  font-family: "Noto serif", serif;
+  font-family: Noto serif, serif;
   font-weight: 300;
   font-size: 5rem;
 }
