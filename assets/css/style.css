@@ -472,7 +472,7 @@ a:hover {
 
 #header .logo {
   font-size: 28px;
-  font-family: Noto serif;
+  font-family: Noto serif, serif;
   margin: 0;
   padding: 0;
   font-weight: 100;
